@@ -9,24 +9,24 @@
         }
         /* Default link color */
         a {
-            color: #00aaff; /* Replace with your preferred color */
+            color: #0077cc; /* Replace with your preferred color */
             text-decoration: none; /* Removes underline */
         }
         
         /* Link color on hover */
         a:hover {
-            color: #0077cc; /* Replace with your preferred hover color */
+            color: #ff6600; /* Replace with your preferred hover color */
             text-decoration: underline; /* Optional: Adds underline on hover */
         }
         
         /* Link color when visited */
         a:visited {
-            color: #ff6600; /* Replace with your preferred visited color */
+            color: #00aaff; /* Replace with your preferred visited color */
         }
         
         /* Link color when active */
         a:active {
-            color: #ff6600; /* Replace with your preferred active color */
+            color: #00aaff; /* Replace with your preferred active color */
         }
         #api-status-text {
             font-weight: bold;

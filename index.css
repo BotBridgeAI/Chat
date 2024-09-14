@@ -14,10 +14,10 @@
             color: orange;
         }
         .status-up {
-            color: #3498db; /* Bright blue */
+            color: #39FF14; /* Bright green */
         }
         .status-down {
-            color: #ff6348; /* Bright orange */
+            color: #FF0000; /* Bright red */
         }
         .status-code {
             color: #ffa502; /* Orange */

@@ -1,0 +1,228 @@
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #1e272e;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: row;
+            color: #f5f6fa;
+        }
+        #api-status-text {
+            font-weight: bold;
+        }
+        .status-checking {
+            color: orange;
+        }
+        .status-up {
+            color: green;
+        }
+        .status-down {
+            color: red;
+        }
+        .status-code {
+            color: yellow;
+        }
+        .nav-arrows {
+            cursor: pointer;
+            display: inline-block;
+            padding: 0 5px;
+            font-size: 1.2em;
+            color: #f5f6fa;
+        }
+        .nav-arrows.disabled {
+            color: #555;
+            cursor: not-allowed;
+        }
+        #branding {
+            width: 100%;
+            background-color: #1e272e; /* Match the page background */
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #44bd32; /* Optional border for better separation */
+        }
+
+        #branding h1 {
+            color: #44bd32;
+            font-size: 2em;
+            margin: 0;
+            text-shadow: 0 0 10px #44bd32; /* Green glowing effect */
+        }
+        #sidebar {
+            width: 250px;
+            background-color: #2f3640;
+            padding: 20px;
+            border-right: 1px solid #44bd32;
+            overflow-y: auto;
+        }
+        #sidebar h2 {
+            color: #f5f6fa;
+            font-size: 1.5em;
+        }
+        #sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        #sidebar li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            position: relative;
+            cursor: pointer;
+        }
+        #sidebar li.selected {
+            background-color: #44bd32;
+            color: #2f3640;
+        }
+        #main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        #chat-container {
+            width: 100%;
+            max-width: 700px;
+            background-color: #2f3640;
+            border: 1px solid #718093;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            overflow-y: auto;
+            height: 400px;
+            margin-bottom: 20px;
+        }
+        .message {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #353b48;
+        }
+        .user {
+            text-align: right;
+            background-color: #44bd32;
+        }
+        .bot {
+            text-align: left;
+            background-color: #00a8ff;
+        }
+        #input-container {
+            display: flex;
+            width: 100%;
+            max-width: 700px;
+            margin-bottom: 10px;
+        }
+        #input-container input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #44bd32;
+            border-radius: 5px 0 0 5px;
+            background-color: #2f3640;
+            color: #f5f6fa;
+        }
+        #input-container button {
+            padding: 10px;
+            border: 1px solid #44bd32;
+            border-left: none;
+            border-radius: 0 5px 5px 0;
+            background-color: #44bd32;
+            color: #f5f6fa;
+            cursor: pointer;
+        }
+        #settings-container {
+            width: 100%;
+            max-width: 700px;
+            background-color: #2f3640;
+            border: 1px solid #44bd32;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+        }
+        .setting {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #f5f6fa;
+        }
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #44bd32;
+            border-radius: 5px;
+            background-color: #2f3640;
+            color: #f5f6fa;
+        }
+        #save-load-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        #save-load-container button {
+            width: 48%;
+            padding: 10px;
+            border: 1px solid #44bd32;
+            border-radius: 5px;
+            background-color: #44bd32;
+            color: #f5f6fa;
+            cursor: pointer;
+        }
+        #api-status {
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        #upload-container {
+            margin-top: 15px;
+        }
+        #upload-container input[type="file"] {
+            width: 100%;
+        }
+        .remove-btn {
+            background: #ff6b6b;
+            border: none;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        #SettingsMaxTokensSlider {
+            width: 100%;
+        }
+
+        #SettingsMaxTokensValue {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+        /* Simple styling to hide expert settings initially */
+        #expert-settings {
+            display: none; /* Hidden by default */
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #000000;
+            width: 100%;
+            max-width: 700px;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+        }
+        #last#sentences {
+            width: 100%;
+        }
+
+        #last#sentencesValue {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }

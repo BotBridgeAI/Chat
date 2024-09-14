@@ -7,8 +7,26 @@
             flex-direction: row;
             color: #f5f6fa;
         }
+        /* Default link color */
         a {
-            color: orange;   
+            color: #00aaff; /* Replace with your preferred color */
+            text-decoration: none; /* Removes underline */
+        }
+        
+        /* Link color on hover */
+        a:hover {
+            color: #ff6600; /* Replace with your preferred hover color */
+            text-decoration: underline; /* Optional: Adds underline on hover */
+        }
+        
+        /* Link color when visited */
+        a:visited {
+            color: #0077cc; /* Replace with your preferred visited color */
+        }
+        
+        /* Link color when active */
+        a:active {
+            color: #ff6600; /* Replace with your preferred active color */
         }
         #api-status-text {
             font-weight: bold;

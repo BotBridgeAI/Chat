@@ -14,20 +14,20 @@
             color: orange;
         }
         .status-up {
-            color: green;
+            color: #3498db; /* Bright blue */
         }
         .status-down {
-            color: red;
+            color: #ff6348; /* Bright orange */
         }
         .status-code {
-            color: yellow;
+            color: #ffa502; /* Orange */
         }
         .nav-arrows {
             cursor: pointer;
             display: inline-block;
             padding: 0 5px;
             font-size: 1.2em;
-            color: #f5f6fa;
+            color: #3498db; /* Blue */
         }
         .nav-arrows.disabled {
             color: #555;
@@ -38,20 +38,20 @@
             background-color: #1e272e; /* Match the page background */
             padding: 20px;
             text-align: center;
-            border-bottom: 1px solid #44bd32; /* Optional border for better separation */
+            border-bottom: 1px solid #ffa502; /* Orange border for separation */
         }
 
         #branding h1 {
-            color: #44bd32;
+            color: #3498db; /* Blue text */
             font-size: 2em;
             margin: 0;
-            text-shadow: 0 0 10px #44bd32; /* Green glowing effect */
+            text-shadow: 0 0 10px #3498db; /* Blue glowing effect */
         }
         #sidebar {
             width: 250px;
             background-color: #2f3640;
             padding: 20px;
-            border-right: 1px solid #44bd32;
+            border-right: 1px solid #ffa502; /* Orange border */
             overflow-y: auto;
         }
         #sidebar h2 {
@@ -73,7 +73,7 @@
             cursor: pointer;
         }
         #sidebar li.selected {
-            background-color: #44bd32;
+            background-color: #ffa502; /* Orange background */
             color: #2f3640;
         }
         #main-content {
@@ -103,11 +103,11 @@
         }
         .user {
             text-align: right;
-            background-color: #44bd32;
+            background-color: #ffa502; /* Orange background for user */
         }
         .bot {
             text-align: left;
-            background-color: #00a8ff;
+            background-color: #3498db; /* Blue background for bot */
         }
         #input-container {
             display: flex;
@@ -118,17 +118,17 @@
         #input-container input {
             flex: 1;
             padding: 10px;
-            border: 1px solid #44bd32;
+            border: 1px solid #3498db; /* Blue border */
             border-radius: 5px 0 0 5px;
             background-color: #2f3640;
             color: #f5f6fa;
         }
         #input-container button {
             padding: 10px;
-            border: 1px solid #44bd32;
+            border: 1px solid #3498db; /* Blue button */
             border-left: none;
             border-radius: 0 5px 5px 0;
-            background-color: #44bd32;
+            background-color: #3498db;
             color: #f5f6fa;
             cursor: pointer;
         }
@@ -136,7 +136,7 @@
             width: 100%;
             max-width: 700px;
             background-color: #2f3640;
-            border: 1px solid #44bd32;
+            border: 1px solid #3498db; /* Blue border */
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.5);
@@ -153,7 +153,7 @@
         input[type="text"], input[type="number"], select {
             width: 100%;
             padding: 8px;
-            border: 1px solid #44bd32;
+            border: 1px solid #3498db; /* Blue border */
             border-radius: 5px;
             background-color: #2f3640;
             color: #f5f6fa;
@@ -165,9 +165,9 @@
         #save-load-container button {
             width: 48%;
             padding: 10px;
-            border: 1px solid #44bd32;
+            border: 1px solid #3498db; /* Blue border */
             border-radius: 5px;
-            background-color: #44bd32;
+            background-color: #3498db;
             color: #f5f6fa;
             cursor: pointer;
         }
@@ -183,7 +183,7 @@
             width: 100%;
         }
         .remove-btn {
-            background: #ff6b6b;
+            background: #ff6348; /* Bright orange */
             border: none;
             color: white;
             border-radius: 50%;

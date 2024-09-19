@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('DOMContentLoaded', async () => {
         try {
-            const response = await fetch('/api/send');
+            const response = await fetch('https://api.botbridge.net/api/send');
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }

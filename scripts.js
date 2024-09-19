@@ -401,29 +401,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!isResend) {
             processMessageDataImportance();
-            // Update lastBotMessage to the current content
             lastBotMsg = currentBotMessageElement.textContent || currentBotMessageElement.innerHTML;
             console.log('Updated lastBotMsg:', lastBotMsg);
-            lastUserMessage = message; // Store the last user message
+            lastUserMessage = message;
             messagessent = messagessent + 1;
             document.getElementById('messages-sent').value = messagessent;
             displayMessage(message, 'user');
             userInput.value = '';
-            botMessages = []; // Reset bot messages on new send
+            botMessages = [];
             currentBotMessageElement = null;
         }
 
-        lastBotMsg = lastBotMsg ? lastBotMsg : settings.greeting; // Fallback to empty string if null
+        lastBotMsg = lastBotMsg ? lastBotMsg : settings.greeting;
 
         if (document.getElementById('model').value == '') {
             document.getElementById('model').value = 'https://hose-apparatus-wilderness-computer.trycloudflare.com';
         }
+
         try {
             updateSettings();
             const requestData = {
                 messages: [
-                    // { role: 'user', content: messagedataimportance.lusermsg },
-                    //{ role: 'system', content: settings.greeting },
                     { role: 'assistant', content: settings.persona },
                     { role: 'system', content: settings.context },
                     { role: 'system', content: messagedataimportance.messagehistorytrimmed },
@@ -435,10 +433,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 temperature: settings.temperature
             };
 
-            // Log the request body to the console for debugging
             console.log('Request Data:', JSON.stringify(requestData, null, 2));
 
-            const response = await fetch("/api/send", {
+            const response = await fetch("https://api.botbridge.net/api/send", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -446,6 +443,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(requestData)
             });
 
+            const data = await response.json();
+
+            if (data.status === "failed") {
+                displayBotMessage(data.message, 'temporary-notice');
+                return; // Exit early if the request failed
+            }
 
             if (response.body) {
                 const reader = response.body.getReader();
@@ -461,19 +464,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (matches && matches[1]) {
                         const content = matches[1];
                         result += content;
-                        // ORIGINAL DISPLAY MESSAGE FUNCTION >> displayMessage(content, 'bot', false); // Pass 'false' to indicate the message is being generated
-                        clearCurrentBotMessage(); //ATTEMPT TO fully format actively while message is being generated.
-                        displayMessage(result, 'bot', false); // Pass 'false' to indicate the message is being generated
-
+                        clearCurrentBotMessage();
+                        displayMessage(result, 'bot', false);
                     }
                 }
 
                 if (result) {
                     clearCurrentBotMessage();
-                    displayMessage(result, 'bot', true); // Pass 'true' to indicate the message is finalized
+                    displayMessage(result, 'bot', true);
                 }
             } else {
-                const data = await response.json();
                 const botMessage = data.choices[0].message.content;
                 displayMessage(botMessage, 'bot', false);
             }
@@ -485,6 +485,19 @@ document.addEventListener('DOMContentLoaded', () => {
             isResend = false;
         }
     }
+
+    function displayBotMessage(message, type) {
+        const messageElement = document.createElement('div');
+        messageElement.className = 'bot-message ' + type; // Add type for specific styling
+        messageElement.textContent = message;
+        document.getElementById('chat-container').appendChild(messageElement); // Adjust the container ID as needed
+        displayMessage('Sorry, there was an error processing your request.', 'bot', false);
+        // Automatically remove the notice after a few seconds
+        setTimeout(() => {
+            messageElement.remove();
+        }, 10000); // Adjust the duration as needed
+    }
+
 
     function regenerateMessage() {
         if (lastUserMessage) {
@@ -631,7 +644,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function updateQueueCounter() {
         // Fetch the number of jobs in the queue
         const queueCount = document.querySelector('#queue-count');
-        const queueResponse = await fetch('/api/queue-status');
+        const queueResponse = await fetch('https://api.botbridge.net/api/queue-status');
         const queueData = await queueResponse.json();
         const queueLength = queueData.queueLength;
         queueCount.textContent = queueLength;

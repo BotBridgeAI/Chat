@@ -1,13 +1,20 @@
 const express = require('express');
-const path = require('path'); // Built-in Node.js module for working with file paths
+const https = require('https');
+const fs = require('fs');
+const path = require('path');
 
 const app = express();
 
-// Serve static files from the "public" directory
+// Serve static files from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Start the server on port 80
-const port = 80;
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+// Read your SSL certificate and private key
+const options = {
+  key: fs.readFileSync('path/to/private.key.pem'),
+  cert: fs.readFileSync('path/to/domain.cert.pem'),
+};
+
+// Start the HTTPS server
+https.createServer(options, app).listen(443, () => {
+  console.log('HTTPS Server running on port 443');
 });

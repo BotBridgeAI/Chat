@@ -443,10 +443,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(requestData)
             });
 
-            const data = await response.json();
-
-            if (data.status === "failed") {
-                displayBotMessage(data.message, 'temporary-notice');
+            if (!response.ok) {
+                const errorData = await response.json();
+                displayBotMessage(errorData.message || 'Unknown error occurred.', 'temporary-notice');
                 return; // Exit early if the request failed
             }
 
@@ -474,13 +473,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     displayMessage(result, 'bot', true);
                 }
             } else {
+                const data = await response.json();
                 const botMessage = data.choices[0].message.content;
                 displayMessage(botMessage, 'bot', false);
             }
 
         } catch (error) {
             console.error('Error:', error);
-            displayMessage('Sorry, there was an error processing your request.', 'bot', false);
+            displayBotMessage('Sorry, there was an error processing your request.', 'temporary-notice');
         } finally {
             isResend = false;
         }
@@ -491,7 +491,7 @@ document.addEventListener('DOMContentLoaded', () => {
         messageElement.className = 'bot-message ' + type; // Add type for specific styling
         messageElement.textContent = message;
         document.getElementById('chat-container').appendChild(messageElement); // Adjust the container ID as needed
-        displayMessage('Sorry, there was an error processing your request.', 'bot', false);
+
         // Automatically remove the notice after a few seconds
         setTimeout(() => {
             messageElement.remove();

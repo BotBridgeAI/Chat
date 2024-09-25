@@ -354,7 +354,7 @@ function getAvailableServer() {
     return servers.find((server) => !server.busy && !server.down);
 }
 
-const MAX_RETRIES = 45; // Maximum retries before failing
+const MAX_RETRIES = 120; // Maximum retries before failing
 
 // Function to process messages in the queue
 async function processQueue(retryCount = 0) {
